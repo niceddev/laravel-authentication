@@ -24,8 +24,6 @@ class AuthService
             return false;
         }
 
-        $this->auth($request->safe()->except('name'));
-
         return true;
     }
 

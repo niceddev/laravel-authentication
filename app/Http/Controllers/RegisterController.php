@@ -15,6 +15,7 @@ class RegisterController
     public function store(RegisterRequest $request, AuthService $authService)
     {
         if ($authService->register($request)){
+            $authService->auth($request->safe()->except('name'));
             return redirect()->route('home');
         }
 
