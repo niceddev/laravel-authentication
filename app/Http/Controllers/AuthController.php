@@ -20,7 +20,7 @@ class AuthController
             return redirect()->route('home');
         }
 
-        return response('Unauthorized', 401);
+        return redirect()->back()->withErrors('Wrong password or email');
     }
 
     public function logout()

@@ -1,0 +1,21 @@
+body {
+    background: #292b36;
+    font-family: 'Droid Sans Mono', monospace;
+}
+.code {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+h1 {
+    position: relative;
+    font-size: 3vw;
+    color: #fff;
+}
+h2 {
+    margin-top: 10%;
+    font-size: 2vw;
+    color: #59b75c;
+}

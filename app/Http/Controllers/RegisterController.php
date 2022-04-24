@@ -16,9 +16,10 @@ class RegisterController
     {
         if ($authService->register($request)){
             $authService->auth($request->safe()->except('name'));
+
             return redirect()->route('home');
         }
 
-        return response('Unauthorized',401);
-     }
+        return redirect()->back()->withErrors('Wrong password or email');
+    }
 }

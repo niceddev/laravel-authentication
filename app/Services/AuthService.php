@@ -3,10 +3,13 @@
 namespace App\Services;
 
 use App\Entities\UserEntity;
+use App\Mail\RegisterMail;
 use App\Models\User;
+use App\Notifications\WelcomeEmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthService
 {
@@ -23,6 +26,9 @@ class AuthService
         if (!$user){
             return false;
         }
+
+//        $user->notify(new WelcomeEmailNotification());
+        Mail::to('as_lan1998@mail.ru')->send(new RegisterMail($userEntity));
 
         return true;
     }
