@@ -1,1 +1,11 @@
-Design patterns is the best solution of problems 
+Design patterns provide a reusable solution to the programming problems.
+There are 3 types of design patterns: Creational, Structural and Behavioral.
+
+Creational Patterns are used in object creation mechanisms, to create objects that can be decoupled from the system that implemented them.
+For example какой нибудь один паттерн, например factory
+
+next pattern is structural patterns. These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
+
+
+
+and behavior patterns are about managing algorithms, relationships, and responsibilities between objects

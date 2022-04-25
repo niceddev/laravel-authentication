@@ -8,15 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController
 {
+    private $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
+
     public function create()
     {
         return view('auth.login');
     }
 
-    public function store(AuthRequest $request, AuthService $authService)
+    public function store(AuthRequest $request)
     {
         $credentials = $request->validated();
-        if ($authService->auth($credentials)){
+        if ($this->authService->auth($credentials)){
             return redirect()->route('home');
         }
 
@@ -25,7 +32,7 @@ class AuthController
 
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
 
         return redirect()->route('home');
     }

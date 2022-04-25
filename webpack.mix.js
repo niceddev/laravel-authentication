@@ -12,6 +12,9 @@ const mix = require('laravel-mix');
  */
 
 mix.styles([
+    'resources/css/panel.css'
+], 'public/css/panel.css');
+mix.styles([
     'resources/css/app.css',
     'resources/css/mail/register.css',
 ], 'public/css/app.css');

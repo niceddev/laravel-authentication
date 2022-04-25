@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Panel\PanelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -17,10 +18,17 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::view('/', 'main')->name('main');
+
+Route::group(['prefix' => 'panel', 'middleware' => 'is_admin', 'as' => 'panel.'],function(){
+   Route::get('/', [PanelController::class, 'index'])->name('index');
+   Route::post('/logout', [PanelController::class, 'logout'])->name('logout');
+});
+
 Route::middleware('auth')->group(function (){
     Route::view('/home', 'home')->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
 Route::middleware('guest')->group(function () {
     Route::name('register.')->group(function () {
         Route::get('/register', [RegisterController::class, 'create'])->name('form');

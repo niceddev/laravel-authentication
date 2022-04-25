@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthService
 {
-    public function register(Request $request): bool
+    public function register(Request $request)
     {
         $userEntity = new UserEntity(
             $request->getEntity()->getName(),
@@ -27,7 +27,7 @@ class AuthService
             return false;
         }
 
-        $user->notify(new WelcomeEmailNotification($userEntity));
+//        $user->notify(new WelcomeEmailNotification($userEntity));
 //        Mail::to('as_lan1998@mail.ru')->send(new RegisterMail($userEntity));
 
         return true;
