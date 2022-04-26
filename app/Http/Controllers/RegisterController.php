@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
 
@@ -16,7 +17,7 @@ class RegisterController
     {
         if ($authService->register($request)){
             $authService->auth($request->safe()->except('name'));
-
+            UserRegistered::dispatch(auth()->user());
             return redirect()->route('home');
         }
 

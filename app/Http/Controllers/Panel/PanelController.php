@@ -12,7 +12,8 @@ class PanelController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('layouts.panel', compact('users'));
+        $notifications = auth()->user()->unreadNotifications;
+        return view('layouts.panel', compact('users', 'notifications'));
     }
 
     public function logout()

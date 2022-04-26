@@ -31,8 +31,15 @@
             <h2>Users</h2>
             <a href="javascript:void(0);">Hello Bob !</a>
         </div>
+        @forelse($notifications as $notification)
+            <div class="notif success">
+                <h2>{{ $notification->name }}</h2>
+                <p>{{  $notification->email }}</p>
+            </div>
+        @empty
+            Nothing
+        @endforelse
 
-{{--        {{ auth()->user()->is_admin }}--}}
         <article class="larg">
             @foreach($users as $user)
                 <div>

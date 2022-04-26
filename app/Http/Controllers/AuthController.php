@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController
 {

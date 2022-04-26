@@ -27,9 +27,6 @@ class AuthService
             return false;
         }
 
-//        $user->notify(new WelcomeEmailNotification($userEntity));
-//        Mail::to('as_lan1998@mail.ru')->send(new RegisterMail($userEntity));
-
         return true;
     }
 
