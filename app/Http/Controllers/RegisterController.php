@@ -18,6 +18,7 @@ class RegisterController
         if ($authService->register($request)){
             $authService->auth($request->safe()->except('name'));
             UserRegistered::dispatch(auth()->user());
+
             return redirect()->route('home');
         }
 

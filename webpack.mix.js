@@ -19,5 +19,5 @@ mix.styles([
     'resources/css/mail/register.css',
 ], 'public/css/app.css');
 
-
+mix.js('resources/js/panel.js', 'public/js');
 mix.js('resources/js/app.js', 'public/js');

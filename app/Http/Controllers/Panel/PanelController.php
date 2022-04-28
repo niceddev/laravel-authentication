@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 class PanelController extends Controller
 {
@@ -13,7 +14,17 @@ class PanelController extends Controller
     {
         $users = User::all();
         $notifications = auth()->user()->unreadNotifications;
-        return view('layouts.panel', compact('users', 'notifications'));
+        return view('dashboard', compact('users', 'notifications'));
+    }
+
+    public function markAsRead(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->where('id', $request->id)
+            ->markAsRead();
+
+        return response()->noContent();
     }
 
     public function logout()

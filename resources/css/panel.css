@@ -215,6 +215,10 @@ a:hover {
     border: 1px solid;
     margin: 10px auto;
 }
+.notif button {
+    color: gray;
+    text-decoration: underline;
+}
 .success{
     background-color: #8d5;
     border-color: #6b3;
