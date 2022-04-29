@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Panel\PanelController;
+use App\Http\Controllers\Panel\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 
@@ -20,6 +21,7 @@ Route::view('/', 'main')->name('main');
 
 Route::group(['prefix' => 'panel', 'middleware' => 'is_admin', 'as' => 'panel.'],function(){
    Route::get('/', [PanelController::class, 'index'])->name('index');
+   Route::get('/products', [ProductController::class, 'index'])->name('products');
    Route::post('/mark-as-read', [PanelController::class, 'markAsRead']);
    Route::post('/logout', [PanelController::class, 'logout'])->name('logout');
 });

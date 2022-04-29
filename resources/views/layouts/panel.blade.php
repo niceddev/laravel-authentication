@@ -10,6 +10,26 @@
     <link rel="stylesheet" href="{{ mix('css/panel.css') }}">
 </head>
 <body>
+    <span class="bckg"></span>
+    <header>
+        <h1><a href="{{ route('panel.index') }}">Dashboard</a></h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ route('panel.index') }}">Users</a>
+                </li>
+                <li>
+                    <a href="{{ route('panel.products') }}">Products</a>
+                </li>
+                <li>
+                    <form action="{{ route('panel.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
     @yield('content')
     <script src="{{ mix('js/panel.js') }}"></script>
 </body>

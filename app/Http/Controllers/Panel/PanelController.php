@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class PanelController extends Controller
     {
         $users = User::all();
         $notifications = auth()->user()->unreadNotifications;
-        return view('dashboard', compact('users', 'notifications'));
+//        $products = Product::all()->load('cities');
+        $products = Product::with('cities')->get();
+        return view('panel.dashboard', compact('users', 'notifications', 'products'));
     }
 
     public function markAsRead(Request $request)
