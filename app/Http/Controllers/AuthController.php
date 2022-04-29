@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserLoggedIn;
 use App\Events\UserRegistered;
 use App\Http\Requests\AuthRequest;
 use App\Services\AuthService;
@@ -24,6 +25,8 @@ class AuthController
     {
         $credentials = $request->validated();
         if ($this->authService->auth($credentials)){
+            UserLoggedIn::dispatch(auth()->user());
+
             return redirect()->route('home');
         }
 

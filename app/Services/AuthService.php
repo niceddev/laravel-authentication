@@ -27,6 +27,8 @@ class AuthService
             return false;
         }
 
+//        $user->notify(new WelcomeEmailNotification($userEntity)); --send to mail success message
+
         return true;
     }
 
